@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <script src="{{ asset('assets/vendor/bower_components/jquery/dist/jquery.js') }}"></script>
+    </head>
+    <body>
+        {% block body %}
+        <div>
+            <div style="display:block; float: left">
+            {{ form_start(form)}}
+                <div>{{ form_label(form.body) }}</div>
+                <div>{{ form_errors(form.body) }}</div>
+                <div>{{ form_widget(form.body) }}</div>
+                <input type="submit" value="OK">
+            {{ form_end(form) }}
+            </div>
+            <div style="display:block; float: left; margin-left: 40px;">
+                {% if posts is not empty %}
+                    {% for post in posts %}
+                        <div>{{ post.body }} [{{ post.createdOn |date }}] by {#{{ post.user.firstName }} ({{ post.user.email }}#})</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+            <select id="receiver">
+                {% for user in users %}
+                    {% if user.id != app.user.id %}
+                        <option value="{{ user.id }}">{{ user.firstName }} {{ user.lastName }} {{ user.email }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            <div>
+                <textarea id="msg_box"></textarea>
+            </div>
+            <button id="send">SEND</button>
+            <div id="dialog">
+                {% for message in messages %}
+                <div class="dialog_box">{{ message.body }}</div>
+                {% endfor %}
+            </div>
+            <button id="check">check mail</button>
+        {% endblock %}
+        {% block javascripts %}
+        <script>
+            $(document).ready(function() {
+                $('#send').on('click', function() {
+                    jQuery.ajax({
+                        type: 'PUT',
+                        url: '{{ path('send_message') }}',
+                        data: {
+                            'msg': $('#msg_box').val(),
+                            'receiver': $('#receiver').val()
+                        },
+                        success: function (t) {
+                            alert(t);
+                        },
+                        error: function () {
+                        }
+                    });
+
+                })
+
+//                $('#check').on('click',
+                        setInterval(function() {
+                    jQuery.ajax({
+                        type: 'PUT',
+                        url: '{{ path('get_dialog') }}',
+                        data: {
+                            'interlocutor': /*$('#receiver').val()*/31
+                        },
+                        success: function (t) {
+                            var res = JSON.parse(t);
+                            console.info(res);
+                            for (var i = res.length-1 ;i>-1;i--) {
+
+                                var appendix = '<div class=\"dialog_box\">'+res[i].body+'</div>';
+                                console.info(appendix, i);
+                                $('#dialog').append(appendix);
+                            }
+                        },
+                        error: function () {
+                        }
+                    });
+
+                }, 1500)
+                });
+        </script>
+        {% endblock %}
+    </body>
+</html>

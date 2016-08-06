@@ -1,0 +1,74 @@
+AppBundle\Entity\Post:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        body:
+            type: text
+        createdOn:
+            type: datetime
+#        contactLastName:
+#            type: string
+#            length: '100'
+#        contactEmail:
+#            type: string
+#            length: '100'
+#        contactPhone:
+#            type: string
+#            length: '100'
+#        contactMobilePhone:
+#            type: string
+#            length: '100'
+#        accreditationFlag:
+#            type: boolean
+#        subscribeIndividual:
+#            type: boolean
+#        isInSpotLight:
+#            type: boolean
+#        status:
+#            type: integer
+#        organizerName:
+#            type: string
+#            nullable: true
+#    oneToMany:
+#        studentsActivities:
+#            targetEntity: AppBundle\Entity\StudentsActivities
+#            mappedBy: activity
+#        sessions:
+#            targetEntity: AppBundle\Entity\Session
+#            mappedBy: activity
+#            cascade: ["persist", "remove"]
+#        activityTrans:
+#            targetEntity: AppBundle\Entity\ActivityTrans
+#            mappedBy: activity
+#            cascade: ["persist", "remove"]
+#        activityContents:
+#            targetEntity: AppBundle\Entity\ActivityContent
+#            mappedBy: activity
+#            cascade: ["persist", "remove"]
+#    manyToOne:
+#        studentAssociation:
+#            targetEntity: AppBundle\Entity\StudentAssociation
+#            inversedBy: activities
+#        activityType:
+#            targetEntity: AppBundle\Entity\ActivityType
+#        company:
+#            targetEntity: AppBundle\Entity\Company
+#        faculty:
+#            targetEntity: AppBundle\Entity\Faculty
+#            inversedBy: activities
+#        campus:
+#            targetEntity: AppBundle\Entity\Campus
+#            inversedBy: activities
+#        activityCategory:
+#            targetEntity: AppBundle\Entity\ActivityCategory
+#            inversedBy: activities
+#    manyToMany:
+#        careerPhases:
+#            targetEntity: AppBundle\Entity\CareerPhase
+#            inversedBy: activities

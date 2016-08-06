@@ -1,0 +1,14 @@
+homepage:
+    path: /
+    defaults:   { _controller: AppBundle:Default:index }
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+#send_message:
+#    path: /send
+#    defaults:   { _controller: AppBundle:Message:sendMessage }
+#get_dialog:
+#    path: /dialog
+#    defaults:   { _controller: AppBundle:Message:getDialog }
+#files_show_index:
+#    path: /drive
+#    defaults:   { _controller: AppBundle:File:index }

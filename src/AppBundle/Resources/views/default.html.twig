@@ -1,0 +1,4 @@
+{% block body %}
+{{ form(form) }}
+    {% for post in posts %} {{ post.id }} {{ post.body }} <br> {% endfor %}
+{% endblock %}
