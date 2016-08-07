@@ -5,9 +5,11 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Post;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\BrowserKit\Tests\SpecialResponse;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -33,12 +35,12 @@ class DefaultController extends Controller
             '@App/default.html.twig',
             [
                 'form' => $form->createView(), 
-                'posts' => $this->getPosts(),
+                'posts' => $this->getPostsAction(),
             ]
         );
     }
 
-    public function getPosts()
+    public function getPostsAction()
     {
         $entityManager = $this->getDoctrine()->getManager();
         $posts = $entityManager->getRepository('AppBundle:Post')->findAll();
