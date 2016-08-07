@@ -16,13 +16,13 @@ class DefaultControllerTest extends WebTestCase
         $this->assertContains('Body', $crawler->filter('body')->text());
     }
 
-    public function test2Index()
-    {
-        $client = static::createClient();
-
-        $crawler = $client->request('GET', '/');
-
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $this->assertContains('works', $crawler->filter('body')->text());
-    }
+//    public function test2Index()
+//    {
+//        $client = static::createClient();
+//
+//        $crawler = $client->request('GET', '/');
+//
+//        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+//        $this->assertContains('B', $crawler->filter('body')->text());
+//    }
 }
