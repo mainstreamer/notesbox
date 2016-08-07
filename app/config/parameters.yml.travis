@@ -1,0 +1,12 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_user: travis
+    database_password: ~
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: notesbox
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: ef449bb2392abee659d8d2fce55c33e8c7401406
