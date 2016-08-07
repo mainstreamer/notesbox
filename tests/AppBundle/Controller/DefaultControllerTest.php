@@ -25,4 +25,5 @@ class DefaultControllerTest extends WebTestCase
 //        $this->assertEquals(200, $client->getResponse()->getStatusCode());
 //        $this->assertContains('B', $crawler->filter('body')->text());
 //    }
+//ok
 }
